@@ -1,5 +1,4 @@
 let map;
-let visitorCount = localStorage.getItem('visitorCount') || 0;
 let backgroundMusic = document.getElementById('backgroundMusic');
 let neighborhood = '';
 
@@ -133,7 +132,7 @@ function requestLocation() {
                 
                 initMap(position.coords.latitude, position.coords.longitude);
                 showContent();
-                incrementCounter();
+                updateLocationDisplay();
             },
             (error) => {
                 console.error('Error getting location:', error);
@@ -151,10 +150,8 @@ function requestLocation() {
     }
 }
 
-function incrementCounter() {
-    visitorCount = parseInt(visitorCount) + 1;
-    localStorage.setItem('visitorCount', visitorCount);
-    const locationText = `Across ${neighborhood}: ${visitorCount}`;
+function updateLocationDisplay() {
+    const locationText = `Rampage across ${neighborhood}`;
     document.getElementById('visitorCount').innerHTML = locationText.replace(
         neighborhood,
         `<span class="rainbow-zoom">${neighborhood}</span>`
