@@ -1,0 +1,7 @@
+[[redirects]]
+  from = "/"
+  to = "/location.html"
+  status = 302
+
+[build]
+  publish = "public" 
